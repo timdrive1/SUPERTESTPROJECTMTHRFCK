@@ -6,6 +6,7 @@ public class TrackingService {
     private int goal;
     private List<HistoryItem> history = new ArrayList<HistoryItem>();
     private int historyId = 0;
+    HistoryItem historyItem = null;
 
     public void addProtein(int amount){
         total += amount;

@@ -42,9 +42,30 @@ public class TrackingServiceTests {
         service.removeProtein(5);
         assertEquals(0, service.getTotal());
     }
+    @Test
+    public void Null(){
+        assertNull(service.historyItem);
+    }
+
+    @Test
+    public void True(){
+        assertTrue(service.isGoalMet());
+    }
+    @Test
+    public void notNull(){
+        assertNotNull(service);
+    }
     @Test(expected = InvalidGoalException.class)
     public void WhenGoalIsSetToLessThnZeroExceptionIsThrown() throws InvalidGoalException {
         service.setGoal(-5);
+
+    }
+
+    @Test
+    public void History(){
+        service.addProtein(20);
+        service.removeProtein(10);
+        System.out.println(service.getHistory());
 
     }
     @Test(timeout = 200)
