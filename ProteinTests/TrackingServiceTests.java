@@ -1,4 +1,5 @@
 import org.junit.*;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.*;
 
@@ -28,6 +29,7 @@ public class TrackingServiceTests {
     }
 
     @Test
+    @Category({GoodCategories.class, BadCategories.class})
     public void  NewTrackingServiceTotalZero(){
         assertEquals("Tracking service total was not zero", 0, service.getTotal());
     }
@@ -38,6 +40,7 @@ public class TrackingServiceTests {
         assertEquals("Protein amount was not correct", 10, service.getTotal());
     }
     @Test
+    @Category(GoodCategories.class)
     public void WhenRemovingProteinTotalRemainZero(){
         service.removeProtein(5);
         assertEquals(0, service.getTotal());
@@ -55,6 +58,7 @@ public class TrackingServiceTests {
     public void notNull(){
         assertNotNull(service);
     }
+
     @Test(expected = InvalidGoalException.class)
     public void WhenGoalIsSetToLessThnZeroExceptionIsThrown() throws InvalidGoalException {
         service.setGoal(-5);
@@ -62,6 +66,7 @@ public class TrackingServiceTests {
     }
 
     @Test
+    @Category(GoodCategories.class)
     public void History(){
         service.addProtein(20);
         service.removeProtein(10);
